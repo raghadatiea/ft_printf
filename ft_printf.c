@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratieh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/24 13:42:33 by ratieh            #+#    #+#             */
+/*   Updated: 2026/11/24 13:42:36 by ratieh           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)
 {
-	int	i;
-	int	count;
-	va_list args;
+	int		i;
+	int		count;
+	va_list	args;
 
 	va_start(args, format);
 	i = 0;
@@ -18,7 +30,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			count += ft_handle_format(format[++i], &args); 
+			count += ft_handle_format(format[++i], &args);
 		}
 		i++;
 	}

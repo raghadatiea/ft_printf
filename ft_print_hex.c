@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ratieh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/24 13:45:36 by ratieh            #+#    #+#             */
+/*   Updated: 2026/11/24 13:45:38 by ratieh           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_print_hex(char alpha_con, unsigned int c)
 {
 	int		i;
-	int		j;
+	int		len;
 	char	digit[8];
 	char	*base;
 
 	i = 0;
-	j = 0;
-	if (alpha_con == 'x')
-		base = "0123456789abcdef";
-	else
+	len = 0;
+	base = "0123456789abcdef";
+	if (alpha_con == 'X')
 		base = "0123456789ABCDEF";
 	if (c == 0)
 	{
@@ -20,13 +31,11 @@ int	ft_print_hex(char alpha_con, unsigned int c)
 	}
 	while (c > 0)
 	{
-		digit[j++] = base[c % 16];
-		c = c / 16;
+		digit[i++] = base[c % 16];
+		c /= 16;
 	}
-	while (j > 0)
-	{
-		write(1, &digit[--j], 1);
-		i++;
-	}
-	return (i);
+	len = i;
+	while (i > 0)
+		write(1, &digit[--i], 1);
+	return (len);
 }
